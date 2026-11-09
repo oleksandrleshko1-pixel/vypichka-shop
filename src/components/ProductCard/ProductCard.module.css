@@ -1,0 +1,55 @@
+.card {
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  overflow: hidden;
+  background: #fff;
+}
+
+.img {
+  background: var(--pink);
+  height: 110px;
+  display: grid;
+  place-items: center;
+  font-size: 56px;
+  text-decoration: none;
+}
+
+.title {
+  color: inherit;
+  text-decoration: none;
+}
+
+.title:hover {
+  text-decoration: underline;
+}
+
+.body {
+  padding: 14px;
+}
+
+.body h3 {
+  margin: 0 0 4px;
+  font-size: 15px;
+}
+
+.body p {
+  margin: 0 0 12px;
+  font-size: 12px;
+  color: var(--text-muted);
+}
+
+.row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.add {
+  width: 30px;
+  height: 30px;
+  border: 0;
+  border-radius: 8px;
+  background: var(--yellow);
+  font-weight: 700;
+  cursor: pointer;
+}

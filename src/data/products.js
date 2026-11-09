@@ -1,0 +1,12 @@
+export const products = [
+  { id: 'medovyk', category: 'cakes', emoji: '🎂', title: 'Медовик', desc: '1 кг', price: 420, isNew: false },
+  { id: 'cheesecake', category: 'cakes', emoji: '🍰', title: 'Чізкейк ягідний', desc: '800 г', price: 480, isNew: false },
+  { id: 'truffle', category: 'cakes', emoji: '🍫', title: 'Шоколадний трюфель', desc: '1,2 кг', price: 560, isNew: false },
+  { id: 'strawberry', category: 'cakes', emoji: '🍓', title: 'Полуничний', desc: '1 кг', price: 510, isNew: false },
+  { id: 'carrot', category: 'cakes', emoji: '🥕', title: 'Морквяний', desc: '900 г, веган', price: 390, isNew: false },
+  { id: 'lemon', category: 'cakes', emoji: '🍋', title: 'Лимонний', desc: '800 г', price: 440, isNew: false },
+  { id: 'napoleon', category: 'pastry', emoji: '🍰', title: 'Наполеон', desc: 'Листкове тісто, заварний крем', price: 180, isNew: true },
+  { id: 'croissant', category: 'pastry', emoji: '🥐', title: 'Круасан з мигдалем', desc: 'Масляний, 90 г', price: 65, isNew: true },
+  { id: 'cookies', category: 'cookies', emoji: '🍪', title: 'Вівсяне печиво', desc: 'Набір із 6 штук', price: 95, isNew: true },
+  { id: 'baguette', category: 'bread', emoji: '🥖', title: 'Багет на заквасці', desc: 'Випікається щодня зранку', price: 70, isNew: true },
+];

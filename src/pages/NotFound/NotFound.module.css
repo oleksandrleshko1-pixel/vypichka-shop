@@ -1,0 +1,32 @@
+.page {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 8px;
+  padding: 80px 16px;
+  text-align: center;
+}
+
+.code {
+  font-size: 96px;
+  font-weight: 800;
+  color: var(--yellow);
+}
+
+.page h1 {
+  margin: 0;
+}
+
+.page p {
+  margin: 0 0 16px;
+  color: var(--text-muted);
+}
+
+.link {
+  padding: 12px 20px;
+  border-radius: 10px;
+  background: var(--plum);
+  color: #fff;
+  font-weight: 700;
+  text-decoration: none;
+}

@@ -1,0 +1,87 @@
+.page {
+  max-width: 1100px;
+  margin: 0 auto;
+  padding: 20px 16px 40px;
+}
+
+.hero {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 24px;
+  background: var(--pink);
+  border-radius: 16px;
+  padding: 40px 48px;
+}
+
+.hero h1 {
+  margin: 0 0 12px;
+  max-width: 420px;
+  font-size: 34px;
+  line-height: 1.2;
+}
+
+.hero p {
+  margin: 0 0 24px;
+  max-width: 400px;
+  color: var(--text-muted);
+}
+
+.cta {
+  display: inline-block;
+  padding: 12px 20px;
+  border-radius: 10px;
+  background: var(--plum);
+  color: #fff;
+  font-weight: 700;
+  text-decoration: none;
+}
+
+.heroImg {
+  font-size: 140px;
+}
+
+.chips {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  margin: 24px 0;
+}
+
+.chip,
+.chipActive {
+  padding: 8px 18px;
+  border: 1px solid var(--border);
+  border-radius: 999px;
+  background: #fff;
+  color: var(--plum);
+  cursor: pointer;
+}
+
+.chipActive {
+  background: var(--yellow);
+  border-color: var(--yellow);
+  font-weight: 700;
+}
+
+.title {
+  margin: 0 0 14px;
+  font-size: 18px;
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(190px, 1fr));
+  gap: 16px;
+}
+
+@media (max-width: 700px) {
+  .hero {
+    flex-direction: column;
+    padding: 24px;
+  }
+
+  .heroImg {
+    font-size: 90px;
+  }
+}

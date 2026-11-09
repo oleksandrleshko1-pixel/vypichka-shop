@@ -1,0 +1,28 @@
+.btn {
+  width: 100%;
+  padding: 12px 20px;
+  border: 0;
+  border-radius: 10px;
+  font-weight: 700;
+  cursor: pointer;
+}
+
+.primary {
+  background: var(--plum);
+  color: #fff;
+}
+
+.accent {
+  background: var(--yellow);
+  color: var(--plum);
+}
+
+.outline {
+  background: #fff;
+  border: 1px solid var(--border);
+  color: var(--plum);
+}
+
+.auto {
+  width: auto;
+}
