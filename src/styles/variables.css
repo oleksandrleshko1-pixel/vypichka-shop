@@ -1,0 +1,18 @@
+:root {
+  --plum: #4a1d3d;
+  --pink: #fbe0e3;
+  --yellow: #f4c95d;
+  --text-muted: #7a6a75;
+  --border: #ecd9dc;
+  --radius: 12px;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  font-family: Inter, system-ui, sans-serif;
+  color: var(--plum);
+}
