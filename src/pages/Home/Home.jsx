@@ -1,15 +1,11 @@
 import { Link } from 'react-router-dom';
 import ProductCard from '../../components/ProductCard/ProductCard';
+import { products } from '../../data/products';
 import s from './Home.module.css';
 
 const categories = ['Усе', 'Торти', 'Тістечка', 'Хліб', 'Печиво'];
 
-const news = [
-  { emoji: '🍰', title: 'Наполеон', desc: 'Листкове тісто, заварний крем', price: 180 },
-  { emoji: '🥐', title: 'Круасан з мигдалем', desc: 'Масляний, 90 г', price: 65 },
-  { emoji: '🍪', title: 'Вівсяне печиво', desc: 'Набір із 6 штук', price: 95 },
-  { emoji: '🥖', title: 'Багет на заквасці', desc: 'Випікається щодня зранку', price: 70 },
-];
+const news = products.filter((p) => p.isNew);
 
 export default function Home() {
   return (
