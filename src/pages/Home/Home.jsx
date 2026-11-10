@@ -1,13 +1,14 @@
 import { Link } from 'react-router-dom';
 import ProductCard from '../../components/ProductCard/ProductCard';
-import { products } from '../../data/products';
+import useProducts from '../../hooks/useProducts';
 import s from './Home.module.css';
 
 const categories = ['Усе', 'Торти', 'Тістечка', 'Хліб', 'Печиво'];
 
-const news = products.filter((p) => p.isNew);
-
 export default function Home() {
+  const { products, loading, error } = useProducts();
+  const news = products.filter((p) => p.isNew);
+
   return (
     <main className={s.page}>
       <section className={s.hero}>
@@ -30,9 +31,11 @@ export default function Home() {
       </div>
 
       <h2 className={s.title}>Новинки</h2>
+      {loading && <p>Завантаження…</p>}
+      {error && <p>Не вдалося завантажити товари: {error}</p>}
       <div className={s.grid}>
         {news.map((p) => (
-          <ProductCard key={p.title} {...p} />
+          <ProductCard key={p.id} {...p} />
         ))}
       </div>
     </main>

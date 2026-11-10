@@ -21,16 +21,18 @@
   font-size: 16px;
 }
 
-.row {
-  display: flex;
-  justify-content: space-between;
-  font-size: 14px;
+.panel p {
+  margin: 0;
 }
 
-.row a {
-  color: var(--plum);
-  font-weight: 700;
-  text-decoration: none;
+.muted {
+  font-size: 13px;
+  color: var(--text-muted);
+}
+
+.error {
+  font-size: 14px;
+  color: #c0392b;
 }
 
 @media (max-width: 700px) {
