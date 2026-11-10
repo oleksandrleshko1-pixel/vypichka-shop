@@ -1,0 +1,5 @@
+[
+  { "id": "medovyk", "category": "cakes", "emoji": "🎂", "title": "Медовик", "desc": "1 кг", "price": 420, "isNew": true },
+  { "id": "baguette", "category": "bread", "emoji": "🥖", "title": "Багет", "desc": "300 г", "price": 60, "isNew": false },
+  { "id": "macaron", "category": "cookies", "emoji": "🍪", "title": "Макарон", "desc": "6 шт", "price": 150, "isNew": true }
+]
