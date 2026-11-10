@@ -1,9 +1,9 @@
 import { createContext, useCallback, useContext, useState } from 'react';
 import usePost from '../hooks/usePost';
-import { AUTH_API } from '../api/config';
+import { LOGIN_API, REGISTER_API } from '../api/config';
 
 const AuthContext = createContext(null);
-const STORAGE_KEY = 'vypichka-auth';
+const STORAGE_KEY = 'vypichka-auth-v2';
 
 function readUser() {
   try {
@@ -23,39 +23,32 @@ function saveUser(user) {
 }
 
 export function AuthProvider({ children }) {
-  const [user, setUser] = useState(readUser);
-  const loginRequest = usePost(`${AUTH_API}/auth/login`);
-  const registerRequest = usePost(`${AUTH_API}/users/add`);
+  const [user, setUser] = useState(readUser); // { id, name, email, token }
+  const loginRequest = usePost(LOGIN_API);
+  const registerRequest = usePost(REGISTER_API);
 
   const startSession = useCallback((nextUser) => {
     setUser(nextUser);
     saveUser(nextUser);
   }, []);
 
-  // Вхід: POST /auth/login -> токен і дані користувача
+  // Вхід: POST /api/auth/login -> { user, token }
   const login = useCallback(
-    async (username, password) => {
-      const data = await loginRequest.post({ username, password, expiresInMins: 60 });
+    async (email, password) => {
+      const data = await loginRequest.post({ email, password });
       if (!data) return false;
-      startSession({
-        id: data.id,
-        username: data.username,
-        email: data.email,
-        firstName: data.firstName,
-        token: data.accessToken ?? data.token,
-      });
+      startSession({ ...data.user, token: data.token });
       return true;
     },
     [loginRequest.post, startSession]
   );
 
-  // Реєстрація: POST /users/add. Тестовий сервер не зберігає акаунт,
-  // тому після успішної відповіді одразу відкриваємо сесію.
+  // Реєстрація: POST /api/auth/register -> { user, token }
   const register = useCallback(
     async ({ name, email, password }) => {
-      const data = await registerRequest.post({ firstName: name, email, username: email, password });
+      const data = await registerRequest.post({ name, email, password });
       if (!data) return false;
-      startSession({ id: data.id, username: email, email, firstName: name, token: null });
+      startSession({ ...data.user, token: data.token });
       return true;
     },
     [registerRequest.post, startSession]
