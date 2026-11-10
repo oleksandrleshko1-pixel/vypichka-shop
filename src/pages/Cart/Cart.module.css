@@ -43,6 +43,58 @@
   color: var(--text-muted);
 }
 
+.qty {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.qty button {
+  width: 26px;
+  height: 26px;
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  background: #fff;
+  color: var(--plum);
+  cursor: pointer;
+}
+
+.sum {
+  min-width: 64px;
+  text-align: right;
+}
+
+.remove {
+  border: none;
+  background: none;
+  color: var(--text-muted);
+  font-size: 20px;
+  cursor: pointer;
+}
+
+.empty {
+  color: var(--text-muted);
+}
+
+.empty a,
+.link {
+  color: var(--plum);
+  font-weight: 700;
+}
+
+.error {
+  margin: 0;
+  font-size: 14px;
+  color: #c0392b;
+}
+
+.done {
+  max-width: 520px;
+  margin: 60px auto;
+  padding: 0 16px;
+  text-align: center;
+}
+
 .total {
   display: flex;
   justify-content: space-between;
