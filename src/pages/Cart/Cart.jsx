@@ -31,18 +31,17 @@ export default function Cart() {
     if (!/^[+\d\s()-]{9,}$/.test(form.phone.trim())) return setFormError('Вкажіть коректний телефон');
     if (delivery && !form.address.trim()) return setFormError('Вкажіть адресу доставки');
 
+    // Ціни та суму сервер рахує сам, тому надсилаємо лише id і кількість
     const order = {
-      userId: user?.id ?? null,
       customer: { name: form.name, phone: form.phone },
       delivery,
       address: delivery ? form.address : null,
       datetime: form.datetime,
       comment: form.comment,
-      items: items.map((i) => ({ id: i.id, title: i.title, price: i.price, qty: i.qty })),
-      total,
+      items: items.map((i) => ({ id: i.id, qty: i.qty })),
     };
 
-    const data = await post(order);
+    const data = await post(order, user?.token);
     if (data) {
       setOrderId(data.id);
       clear();

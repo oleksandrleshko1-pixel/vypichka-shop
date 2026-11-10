@@ -2,6 +2,7 @@ import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import Input from '../../components/Input/Input';
 import Button from '../../components/Button/Button';
+import MyOrders from '../../components/MyOrders/MyOrders';
 import { useAuth } from '../../context/AuthContext';
 import s from './Auth.module.css';
 
@@ -10,30 +11,33 @@ export default function Auth() {
     useAuth();
   const navigate = useNavigate();
 
-  const [loginForm, setLoginForm] = useState({ username: '', password: '' });
+  const [loginForm, setLoginForm] = useState({ email: '', password: '' });
   const [regForm, setRegForm] = useState({ name: '', email: '', password: '', repeat: '', agree: false });
   const [regFormError, setRegFormError] = useState('');
 
   if (user) {
     return (
-      <main className={s.wrap}>
-        <section className={s.panel}>
-          <h2>Ви увійшли</h2>
-          <p>
-            Вітаємо, <strong>{user.firstName || user.username}</strong>!
-          </p>
-          {user.email && <p className={s.muted}>{user.email}</p>}
-          <Button variant="outline" onClick={logout}>
-            Вийти
-          </Button>
-        </section>
-      </main>
+      <>
+        <main className={s.wrap}>
+          <section className={s.panel}>
+            <h2>Ви увійшли</h2>
+            <p>
+              Вітаємо, <strong>{user.name}</strong>!
+            </p>
+            <p className={s.muted}>{user.email}</p>
+            <Button variant="outline" onClick={logout}>
+              Вийти
+            </Button>
+          </section>
+        </main>
+        <MyOrders token={user.token} />
+      </>
     );
   }
 
   const handleLogin = async (e) => {
     e.preventDefault();
-    const ok = await login(loginForm.username.trim(), loginForm.password);
+    const ok = await login(loginForm.email.trim(), loginForm.password);
     if (ok) navigate('/');
   };
 
@@ -59,9 +63,10 @@ export default function Auth() {
       <form className={s.panel} onSubmit={handleLogin}>
         <h2>Вхід</h2>
         <Input
-          placeholder="Логін"
-          value={loginForm.username}
-          onChange={(e) => setLoginForm({ ...loginForm, username: e.target.value })}
+          type="email"
+          placeholder="Електронна пошта"
+          value={loginForm.email}
+          onChange={(e) => setLoginForm({ ...loginForm, email: e.target.value })}
         />
         <Input
           type="password"
@@ -69,9 +74,6 @@ export default function Auth() {
           value={loginForm.password}
           onChange={(e) => setLoginForm({ ...loginForm, password: e.target.value })}
         />
-        <p className={s.muted}>
-          Тестовий вхід: логін <b>emilys</b>, пароль <b>emilyspass</b>
-        </p>
         {loginError && <p className={s.error}>{loginError}</p>}
         <Button type="submit" disabled={loginLoading}>
           {loginLoading ? 'Входимо…' : 'Увійти'}

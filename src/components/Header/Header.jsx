@@ -18,7 +18,7 @@ export default function Header() {
           Кошик · {count}
         </NavLink>
         <NavLink to="/auth" className={s.pill}>
-          {user ? user.firstName || user.username : 'Профіль'}
+          {user ? user.name : 'Профіль'}
         </NavLink>
       </nav>
     </header>
